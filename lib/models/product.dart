@@ -1,10 +1,10 @@
-class Product{
-  int id;
-  int categoryId;
-  String productName;
-  String quantityPerUnit;
-  double unitPrice;
-  int unitsInStock;
+class Product{ // late sonradan eklendi
+  late int id;
+  late int categoryId;
+  late String productName;
+  late String quantityPerUnit;
+  late double unitPrice;
+  late int unitsInStock;
 
   Product(this.id, this.categoryId, this.productName, this.quantityPerUnit, this.unitPrice, this.unitsInStock);
 
