@@ -7,8 +7,8 @@ Programın görünümü aşağıdaki gibidir.
 İlk başlangıçta sadece üstteki butonlar göründü
 
 ![ScreenShot](/screen_shots/img-01.png)
-
-Burada önce tüm liste ekrana geliyor
+<BR>
+Kodlamaya devam edilip, önce tüm listenin ekrana gelmesi sağlandı
 ![ScreenShot](/screen_shots/img-fulllist.png)
 
 Butonlara tıklayınca ise aşağıdaki hata oluşuyor.
