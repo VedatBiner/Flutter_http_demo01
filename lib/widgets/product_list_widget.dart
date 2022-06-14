@@ -17,22 +17,24 @@ class ProductListWidgetState extends State<ProductListWidget>{
     return buildProductList(context); // context cihaz boyutları alınıyor.
   }
   Widget buildProductList(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const SizedBox(height: 10.0),
-        SizedBox(
-          height: 500.0,
-          child: GridView.count(
-            crossAxisCount: 2,
-            children: List.generate(
-              widget.products.length,
-              (index){
-                return ProductListRowWidget(widget.products[index]);
-              }
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          const SizedBox(height: 10.0),
+          SizedBox(
+            height: 500.0,
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: List.generate(
+                widget.products.length,
+                (index){
+                  return ProductListRowWidget(widget.products[index]);
+                }
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

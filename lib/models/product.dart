@@ -1,10 +1,10 @@
 class Product{ // late sonradan eklendi
   late int id;
   late int? categoryId;
-  late String productName;
+  String productName = "";
   late String quantityPerUnit;
   late double unitPrice;
-  late int unitsInStock;
+  int unitsInStock = 0;
 
   Product(this.id, this.categoryId, this.productName, this.quantityPerUnit, this.unitPrice, this.unitsInStock);
 
@@ -14,7 +14,7 @@ class Product{ // late sonradan eklendi
     productName = json["productName"];
     quantityPerUnit = json["quantityPerUnit"];
     unitPrice = double.tryParse(json["unitPrice"].toString())!;
-    unitsInStock = json["unitsInStock"];
+    unitsInStock = int.tryParse(json["unitsInStock"].toString())!;
   }
 
   Map toJson(){

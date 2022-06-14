@@ -69,6 +69,7 @@ class MainScreenState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false, // bunu ben ekledim.
       appBar: AppBar(
         title: const Text(
           "Alışveriş Sistemi",
@@ -77,18 +78,20 @@ class MainScreenState extends State {
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: <Widget>[
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: categoryWidgets,
+      body: SafeArea( // ben ekledim.
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: <Widget>[
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: categoryWidgets,
+                ),
               ),
-            ),
-            ProductListWidget(products)
-          ],
+              ProductListWidget(products)
+            ],
+          ),
         ),
       ),
     );
