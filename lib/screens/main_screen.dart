@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_http_demo/data.api/category_api.dart';
+import 'package:flutter_http_demo/widgets/product_list_widget.dart';
+import '../data.api/product_api.dart';
 import '../models/category.dart';
+import '../models/product.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State {
   List<Category> categories = <Category>[];
   List<Widget> categoryWidgets = <Widget>[];
+  List<Product> products = <Product>[];
 
   @override
   void initState() {
@@ -51,7 +55,7 @@ class MainScreenState extends State {
         ),
       ),
       onPressed: () {
-        print(category.categoryName);
+        getProductsByCategoryId(category);
       },
       child: Text(
         category.categoryName,
@@ -81,18 +85,19 @@ class MainScreenState extends State {
                 children: categoryWidgets,
               ),
             ),
+            ProductListWidget(products)
           ],
         ),
       ),
     );
   }
+
+  void getProductsByCategoryId(Category category) {
+    ProductApi.getProductsByCategoryId(category.id).then((response) {
+      setState((){
+        Iterable list = jsonDecode(response.body);
+        products = list.map((product) => Product.fromJson(product)).toList();
+      });
+    });
+  }
 }
-
-
-
-
-
-
-
-
-

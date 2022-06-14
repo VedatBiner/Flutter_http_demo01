@@ -13,7 +13,7 @@ class Product{ // late sonradan eklendi
     categoryId = json["categoryId"];
     productName = json["productName"];
     quantityPerUnit = json["quantityPerUnit"];
-    unitPrice = json["unitPrice"];
+    unitPrice = double.tryParse(json["unitPrice"].toString())!;
     unitsInStock = json["unitsInStock"];
   }
 
