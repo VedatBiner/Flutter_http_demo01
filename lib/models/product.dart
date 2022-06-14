@@ -1,6 +1,6 @@
 class Product{ // late sonradan eklendi
   late int id;
-  late int categoryId;
+  late int? categoryId;
   late String productName;
   late String quantityPerUnit;
   late double unitPrice;

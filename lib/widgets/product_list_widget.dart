@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_http_demo/widgets/product_list_row_widget.dart';
 import '../models/product.dart';
 
 class ProductListWidget extends StatefulWidget{
   List<Product> products = <Product>[]; // ilk açılış için sıfırladık
   ProductListWidget(this.products, {Key? key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() {
     return ProductListWidgetState();
   }
-
 }
 
 class ProductListWidgetState extends State<ProductListWidget>{
@@ -17,17 +16,25 @@ class ProductListWidgetState extends State<ProductListWidget>{
   Widget build(BuildContext context) {
     return buildProductList(context); // context cihaz boyutları alınıyor.
   }
-
   Widget buildProductList(BuildContext context) {
-    return Expanded(
-      child:ListView.builder(
-        itemCount: widget.products.length,
-        itemBuilder: (context, index){
-          return Text(widget.products[index].productName);
-        }
-      ),
+    return Column(
+      children: <Widget>[
+        const SizedBox(height: 10.0),
+        SizedBox(
+          height: 500.0,
+          child: GridView.count(
+            crossAxisCount: 2,
+            children: List.generate(
+              widget.products.length,
+              (index){
+                return ProductListRowWidget(widget.products[index]);
+              }
+            ),
+          ),
+        ),
+      ],
     );
   }
-
 }
+
 
